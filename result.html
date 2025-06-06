@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="время.ico" type="image/x-icon">
+    <title>Результаты теста</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="wrapper">
+        <h1>Результаты теста</h1>
+        <div id="resultDisplay" style="text-align: center; margin: 20px 0; font-size: 24px;"></div>
+        <button onclick="window.location.href='MainMenu.html'" class="btn">Вернуться в меню</button>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const resultDisplay = document.getElementById("resultDisplay");
+            try {
+                const testResult = JSON.parse(localStorage.getItem('testResult'));
+                
+                if (testResult) {
+                    resultDisplay.innerHTML = `
+                        <div class="result-title">Ваш результат за тест </div>
+                        <div class="result-details">тест "${testResult.testName}" составляет</div>
+                        <div class="result-score">${testResult.score}/${testResult.totalQuestions}</div>
+                    `;
+                    localStorage.removeItem('testResult');
+                } else {
+                    resultDisplay.innerHTML = '<div class="result-title">Результаты не найдены</div>';
+                }
+            } catch (error) {
+                console.error("Ошибка при обработке результатов:", error);
+                resultDisplay.innerHTML = '<div class="result-title">Ошибка при загрузке результатов</div>';
+            }
+        });
+    </script>
+</body>
+</html>

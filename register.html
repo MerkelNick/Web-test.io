@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="время.ico" type="image/x-icon">
+    <title>Регистрация</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<script>
+    document.getElementById("registerForm").addEventListener("submit", async function(event) {
+        event.preventDefault(); // Предотвращаем перезагрузку страницы
+    
+        // Получаем значения полей
+        const email = document.getElementById("email").value;
+        const username = document.getElementById("username").value;
+        const password = document.getElementById("password").value;
+    
+        // Проверяем, что все поля заполнены
+        if (!email || !username || !password) {
+            document.getElementById("message").textContent = "Заполните все поля!";
+            return;
+        }
+    
+        try {
+            // Отправляем данные на сервер
+            const response = await fetch("http://localhost:3000/register", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ email, username, password })
+            });
+    
+            const data = await response.json();
+    
+            if (response.ok) {
+                // Если регистрация успешна, перенаправляем на MainMenu.html
+                window.location.href = "MainMenu.html";
+            } else {
+                // Показываем сообщение об ошибке
+                document.getElementById("message").textContent = data.error;
+            }
+        } catch (error) {
+            console.error("Ошибка запроса:", error);
+            document.getElementById("message").textContent = "Ошибка соединения с сервером!";
+        }
+    });
+    </script>
+<body>
+    <div class="wrapper">
+        <form id="registerForm">
+            <h1>Registration</h1>
+        <div class="input-box">
+            <input type="text" id="email" placeholder="Email" required>
+            <i class="bx bx-user"></i>
+        </div>
+        <div class="input-box">
+            <input type="text" id="username" placeholder="Username" required>
+            <i class="bx bx-user"></i>
+        </div>
+        <div class="input-box">
+            <input type="password" id="password" placeholder="Password" required>
+            <i class='bx bxs-lock-alt'></i>
+        </div>
+        <button type="submit" class="btn">Register an account</button>
+        <div class="register-link">
+            <p>I have an account? <a href="login.html">Login</a></p>
+        </div>
+        </form>
+        <p id="message"></p>
+    </div>
+    <footer>
+        <div class="footer">
+            <div class="footer" id="footer1"></div>
+        </div>
+        <p><a href="https://youtu.be/7-YVyh8_KNE?si=Feb-DlRD5cXU4L9a">©2025 MCM | All Rights Reserved</a></p>
+    </footer>
+    <script>
+        
+        document.getElementById("registerForm").addEventListener("submit", async function(event) {
+            event.preventDefault(); // Предотвращаем перезагрузку страницы
+
+            const email = document.getElementById("email").value;
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+
+            // Проверка на корректность email
+        const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+        if (!emailPattern.test(email)) {
+            document.getElementById("message").textContent = "Введите корректный адрес электронной почты!";
+            return;
+        }
+
+        // Проверка на минимальную длину пароля (не менее 8 символов)
+        if (password.length < 8) {
+            document.getElementById("message").textContent = "Пароль должен содержать не менее 8 символов!";
+            return;
+        }
+
+            if (!email || !username || !password) {
+                document.getElementById("message").textContent = "Заполните все поля!";
+                return;
+            }
+
+            try {
+                const response = await fetch("http://localhost:3000/register", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ email, username, password })
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    localStorage.setItem("user", username); // Сохраняем пользователя
+                    window.location.href = "MainMenu.html"; // Переход в главное меню
+                } else {
+                    document.getElementById("message").textContent = data.error;
+                }
+            } catch (error) {
+                console.error("Ошибка запроса:", error);
+                document.getElementById("message").textContent = "Ошибка соединения с сервером!";
+            }
+        });
+    </script>
+</body>
+</html>

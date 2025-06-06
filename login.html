@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="время.ico" type="image/x-icon">
+    <title>Вход</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+    <div class="wrapper">
+        <form id="loginForm">
+            <h1>Login</h1>
+        <div class="input-box">
+            <input type="text" id="username" placeholder="Username" required>
+            <i class="bx bx-user"></i>
+        </div>
+        <div class="input-box">
+            <input type="password" id="password" placeholder="Password" required>
+            <i class='bx bxs-lock-alt' ></i>
+        </div>
+        <button type="submit" class="btn">Login</button>
+        <div class="register-link">
+            <p>Don't have an account? <a href="register.html">Register</a></p>
+        </div>
+        </form>
+        <p  id="message"></p>
+    </div>
+    <footer>
+        <div class="footer">
+            <div class="footer" id="footer1"></div>
+        </div>
+        <p><a href="https://youtu.be/7-YVyh8_KNE?si=Feb-DlRD5cXU4L9a">©2025 MCM | All Rights Reserved</a></p>
+    </footer>
+    <script>
+        // Добавляем обработчик события "submit" на форму
+        document.getElementById("loginForm").addEventListener("submit", async function(event) {
+            event.preventDefault(); // Предотвращаем стандартное поведение формы (перезагрузку страницы)
+
+            const username = document.getElementById("username").value; // Получаем введенный `username`
+            const password = document.getElementById("password").value; // Получаем введенный `password`
+
+            // Проверяем, чтобы оба поля были заполнены
+            if (!username || !password) {
+                document.getElementById("message").textContent = "Введите имя пользователя и пароль!";
+                return;
+            }
+
+            try {
+                // Отправляем запрос на сервер для проверки логина
+                const response = await fetch("http://localhost:3000/login", {
+                    method: "POST", // Используем метод POST
+                    headers: { "Content-Type": "application/json" }, // Указываем, что передаем JSON
+                    body: JSON.stringify({ username, password }) // Преобразуем данные в JSON
+                });
+
+                const data = await response.json(); // Преобразуем ответ сервера в JSON
+
+                if (response.ok) {
+                    // Если вход успешен, сохраняем пользователя и переходим на `MainMenu.html`
+                    localStorage.setItem("user", username); 
+                    window.location.href = "MainMenu.html";
+                } else {
+                    // Если ошибка, показываем сообщение пользователю
+                    document.getElementById("message").textContent = data.error;
+                }
+            } catch (error) {
+                console.error("Ошибка запроса:", error); // Выводим ошибку в консоль
+                document.getElementById("message").textContent = "Ошибка соединения с сервером!";
+            }
+        });
+    </script>
+</body>
+</html>

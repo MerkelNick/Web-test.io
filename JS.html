@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="время.ico" type="image/x-icon">
+    <title>JavaScript Test</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="wrapper">
+        <h1>JavaScript Test</h1>
+        <form id="jsTest">
+            <p>1. Как объявить переменную в JavaScript (современный способ)?</p>
+            <input type="radio" name="q1" value="let x = 10"><label for="radio">let x = 10;</label>
+            <input type="radio" name="q1" value="var x = 10"><label for="radio">var x = 10;</label>
+            <input type="radio" name="q1" value="define x = 10"><label for="radio">define x = 10;</label>
+
+            <p>2. Какой оператор используется для строгого сравнения?</p>
+            <input type="radio" name="q2" value="=="><label for="radio">==</label>
+            <input type="radio" name="q2" value="==="><label for="radio">===</label>
+            <input type="radio" name="q2" value="!="><label for="radio">!=</label>
+
+            <p>3. Какой метод используется для отображения всплывающего окна с сообщением?</p>
+            <input type="radio" name="q3" value="prompt()"><label for="radio">prompt()</label>
+            <input type="radio" name="q3" value="alert()"><label for="radio">alert()</label>
+            <input type="radio" name="q3" value="console.log()"><label for="radio">console.log()</label>
+
+            <p>4. Как вызвать функцию myFunction()?</p>
+            <input type="radio" name="q4" value="callmyFunction;"><label for="radio">call myFunction;</label>
+            <input type="radio" name="q4" value="myFunction();"><label for="radio">myFunction();</label><br>
+            <input type="radio" name="q4" value="invoke myFunction;"><label for="radio">invoke myFunction;</label>
+
+            <p>5. Как получить элемент по его ID в JavaScript?</p>
+            <input type="radio" name="q5" value="document.getElementById('id')"><label for="radio">document.getElementById('id')</label><br>
+            <input type="radio" name="q5" value="document.querySelector('.id')"><label for="radio">document.querySelector('.id')</label><br>
+            <input type="radio" name="q5" value="document.getElementsByClass('id')"><label for="radio">document.getElementsByClass('id')</label>
+
+            <button type="button" onclick="submitTest('js')" class="btn">Отправить</button>
+        </form>
+    </div>
+    <footer>
+        <div class="footer">
+            <div class="footer" id="footer1"></div>
+        </div>
+        <p><a href="https://youtu.be/7-YVyh8_KNE?si=Feb-DlRD5cXU4L9a">©2025 MCM | All Rights Reserved</a></p>
+    </footer>
+    <script src="tests.js"></script>
+</body>
+</html>

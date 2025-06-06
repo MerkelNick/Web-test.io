@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="время.ico" type="image/x-icon">
+    <title>Main Menu</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="wrapper">
+            <h1>Меню</h1>
+        <div class="button">
+            <button onclick="window.location.href='profile.html'" class="btn"><span id="username"></span>Профиль</button>
+        </div>
+        <div class="button">
+            <button onclick="window.location.href='tests.html'" class="btn">Тесты</button>
+        </div>
+        <div class="button">
+            <button onclick="window.location.href='FunStory.html'" class="btn"><span id="username"></span>О проекте🍕</button>
+        </div>
+    </div>
+    <footer>
+        <div class="footer">
+            <div class="footer" id="footer1"></div>
+        </div>
+        <p><a href="https://youtu.be/7-YVyh8_KNE?si=Feb-DlRD5cXU4L9a">©2025 MCM | All Rights Reserved</a></p>
+    </footer>
+
+    <script>
+        function checkAuth() {
+            let user = localStorage.getItem("user");
+            if (user) {
+                document.getElementById("username").textContent = user;
+            } else {
+                window.location.href = "login.html";
+            }
+        }
+
+        function goToFunStory() {
+            window.location.href = "FunStory.html";
+        }
+    </script>
+</body>
+</html>

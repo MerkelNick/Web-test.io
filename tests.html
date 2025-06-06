@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="время.ico" type="image/x-icon">
+    <title>Вход</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+    <div class="wrapper">
+        <form id="testForm">
+            <h1>Список тестов</h1>
+            <button onclick="openTest('HTML.html')" class="btn">HTML-тест</button>
+            <button onclick="openTest('CSS.html')" class="btn">CSS-тест</button>
+            <button onclick="openTest('JS.html')" class="btn">JavaScript-тест</button>
+            <button onclick="openTest('MainMenu.html')" class="btn">Назад</button>
+        </form>
+    </div>
+    <footer>
+        <div class="footer">
+            <div class="footer" id="footer1"></div>
+        </div>
+        <p><a href="https://youtu.be/7-YVyh8_KNE?si=Feb-DlRD5cXU4L9a">©2025 MCM | All Rights Reserved</a></p>
+    </footer>
+    <script>
+        function openTest(page) {
+            console.log("Пытаюсь открыть:", page);
+            fetch(page)  // Проверяем, существует ли файл перед переходом
+                .then(response => {
+                    if (!response.ok) throw new Error("Файл не найден!");
+                    window.location.href = page;
+                })
+                .catch(error => {
+                    console.error(error);
+                    alert("Ошибка: Файл " + page + " не найден!");
+                });
+        }
+    </script>
+</body>
+</html>

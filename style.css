@@ -1,0 +1,225 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Popins", sans-serif;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: url('windows-11.png') no-repeat;
+    background-size: cover;
+    background-position: center;
+
+}
+
+.wrapper{
+    width: 420px;
+    background: transparent;
+    border: 2px solid rgb(255, 255, 255, .2);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+    color: #fff;
+    border-radius: 10px;
+    padding: 30px 40px;
+}
+
+.wrapper h1{
+    font-size: 36px;
+    text-align: center;
+    color: #333;
+}
+
+.wrapper h2{
+    font-size: 26px;
+    color: #333;
+}
+
+.wrapper .input-box{
+    width: 100%;
+    height: 50%;
+    margin: 30px 0;
+}
+
+.input-box input{
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    border: 2px solid rgb(255, 255, 255, .2);
+    border-radius: 40px;
+    font-size: 16px;
+    color: #333;
+    padding: 20px 45px 20px 20px;
+}
+
+.input-box input::placeholder{
+    color: #666;
+}
+
+.input-box i{
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translate(-50%);
+    font-size: 20px;
+}
+
+.wrapper .remember{
+    display: flex;
+    justify-content: space-between;
+    font-size: 14.5px;
+    margin: -15px 0 15px;
+}
+
+.remember label input{
+    accent-color: transparent;
+    margin-right: 3px;
+}
+
+.remember a{
+    color: #333;
+    text-decoration: none;
+}
+
+.remember a:hover{
+    text-decoration: underline;
+}
+
+.wrapper .btn{
+    width: 100%;
+    height: 50px;
+    margin: 10px 0;
+    background: #fff;
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    box-shadow: 0 0 10px rgb(0, 0, 0, .1);
+    cursor: pointer;
+    font-size: 16px;
+    color: #333;
+    font-weight: 600;
+}
+
+/*Градиентом*/
+.wrapper .btn:hover {
+    background: linear-gradient(to right, #fff, #9b9b9b);
+    background-size: 200% auto;
+    animation: gradient 1.5s ease infinite;
+}
+
+@keyframes gradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.wrapper .remember-link{
+    font-size: 14.5px;
+    text-align: center;
+    margin: 20px;
+}
+
+.wrapper p{
+    margin-bottom: 5px;
+    font-weight: 600;
+    color: #333;
+}
+
+.form_radio_btn label {
+	display: inline-block;
+	cursor: pointer;
+	padding: 0px 15px;
+	line-height: 34px;
+	border: 1px solid #999;
+	border-radius: 30px;
+	user-select: none;
+}
+
+input[type="radio"][name="q2"][value="src"] {
+    accent-color: #000000;
+}
+
+input[type="radio"][name="q2"][value="src"] + label {
+    color: #000000;
+}
+
+.wrapper input[type="radio"]{
+    margin-right: 10px;
+    accent-color: #333;
+    transform: scale(1.4);
+}
+
+.wrapper input[type="radio"]:hover {
+    transform: scale(1.15);
+    transition: 0.2s ease;
+    color: #333;
+}
+
+.wrapper label {
+    cursor: pointer;
+    display: inline-block;
+    margin-bottom: 5px;
+    color: #fff;
+}
+
+.register-link p a:hover{
+    text-decoration: underline;
+    color: purple;
+}
+
+form h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 28px;
+}
+
+/* Таблица */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 25px;
+}
+
+.table th {
+    padding: 12px 10px;
+    text-align: left;
+    color: #333;
+    border-bottom: 1px solid #333;
+}
+
+.table th span {
+    color: #333;
+    font-weight: 50px;
+}
+
+/*footer*/
+
+footer{
+    position: fixed;/*относительное позиционирование*/
+    width: 63%;/*на всю ширину*/
+    padding: 20px;/*поля для контента*/
+    background: transparent;/*цвет футера*/
+    display: flex;
+    justify-content: center;/*в центре по горизонтали*/
+    align-items: center;/*в центре по вертикали*/
+    flex-direction: column;
+    margin-top: 90vh;
+}
+
+.footer .footer{
+    position: absolute;/*абсолютное позиционирование*/
+    top: -200px;
+    left: 0;
+    width: 0%;
+    height: 100px;
+}
+
+footer a{
+    color: #666;
+    text-decoration: none;
+}    

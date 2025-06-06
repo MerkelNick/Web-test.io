@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="время.ico" type="image/x-icon">
+    <title>Profile</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="wrapper">
+        <form id="ProfileForm">
+            <h1><span id="username"></span></h1>
+            <table class="table">
+                <tr>
+                    <th> Test name </th>
+                    <th> Scores </th>
+                </tr>
+                <tr>
+                    <th align="left">HTML</th>
+                    <th><span id="htmlScore">/5</span></th>
+                </tr>
+                <tr>
+                    <th align="left">CSS</th>
+                    <th><span id="cssScore">/5</span></th>
+                </tr>
+                <tr>
+                    <th align="left">JavaScript</th>
+                    <th><span id="jsScore">/5</span></th>
+                </tr>
+            </table>
+            <div class="buttons-container">
+                <button type="button" onclick="goToMainMenu()" class="btn">Назад</button>
+                <button type="button" onclick="logout()" class="btn">Выйти из уч.записи</button>
+            </div>
+        </form>
+    </div>
+    <footer>
+        <div class="footer">
+            <div class="footer" id="footer1"></div>
+        </div>
+        <p><a href="https://youtu.be/7-YVyh8_KNE?si=Feb-DlRD5cXU4L9a">©2025 M | All Rights Reserved</a></p>
+    </footer>
+    <script>
+        function checkAuth() {
+            let user = localStorage.getItem("user");
+            if (user) {
+                document.getElementById("username").textContent = user;
+                loadTestResults(user);
+            } else {
+                window.location.href = "login.html";
+            }
+        }
+
+        function logout() {
+            localStorage.removeItem("user");
+            window.location.href = "login.html";
+        }
+
+        function goToMainMenu() {
+            window.location.href = "MainMenu.html";
+        }
+
+        async function loadTestResults(username) {
+    try {
+        const response = await fetch(`http://localhost:3000/get-test-results/${username}`);
+        const scores = await response.json();
+        
+        console.log("Полученные результаты:", scores); // Добавьте это
+        
+        document.getElementById("htmlScore").textContent = `${scores.HTML || 0}/5`;
+        document.getElementById("cssScore").textContent = `${scores.CSS || 0}/5`;
+        document.getElementById("jsScore").textContent = 
+            `${scores.JavaScript || scores.JS || 0}/5`; // Проверяем оба варианта
+    } catch (error) {
+        console.error("Ошибка:", error);
+    }
+}
+        checkAuth();
+    </script>
+</body>
+</html>

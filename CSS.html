@@ -1,0 +1,49 @@
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="время.ico" type="image/x-icon">
+    <title>CSS Test</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="wrapper">
+        <h1>CSS Test</h1>
+        <form id="cssTest">
+            <p>1. Какой селектор выбирает все элементы p в CSS?</p>
+            <input type="radio" name="q1" value="p {}"><label for="radio">p {}</label> 
+            <input type="radio" name="q1" value="#p {}"><label for="radio">#p {}</label> 
+            <input type="radio" name="q1" value=".p {}"><label for="radio">.p {}</label> 
+
+            <p>2. Какой CSS-свойство отвечает за отступы внутри элемента?</p>
+            <input type="radio" name="q2" value="padding"><label for="radio">padding</label>
+            <input type="radio" name="q2" value="margin"><label for="radio">margin</label>
+            <input type="radio" name="q2" value="border"><label for="radio">border</label>
+
+            <p>3.  Какой единицей измерения чаще всего задают размеры шрифта?</p>
+            <input type="radio" name="q3" value="px"><label for="radio">px</label>
+            <input type="radio" name="q3" value="kg"><label for="radio">kg</label>
+            <input type="radio" name="q3" value="cm"><label for="radio">cm</label>
+
+            <p>4.  Как сделать фон страницы красным?</p>
+            <input type="radio" name="q4" value="color: red;"><label for="radio">color: red;</label> 
+            <input type="radio" name="q4" value="background-color: red;"><label for="radio">background-color: red;</label>
+            <input type="radio" name="q4" value="text-color: red;"><label for="radio">text-color: red;</label>
+
+            <p>5.  Какой псевдокласс используется для стилизации ссылки при наведении?</p>
+            <input type="radio" name="q5" value=":hover"> <label for="radio"> :hover</label>
+            <input type="radio" name="q5" value=":focus"> <label for="radio"> :focus</label>
+            <input type="radio" name="q5" value=":link"> <label for="radio"> :link</label>
+
+            <button type="button" onclick="submitTest('css')" class="btn">Отправить</button>
+        </form>
+    </div>
+    <footer>
+        <div class="footer">
+            <div class="footer" id="footer1"></div>
+        </div>
+        <p><a href="https://www.youtube.com/watch?v=1UlF2ctAKB0&list=PLTBLax1DE161e8zry6Q7f2AeEwlQygZGv&index=4">©2025 MCM | All Rights Reserved</a></p>
+    </footer>
+    <script src="tests.js"></script>
+</body>
+</html>
